@@ -12,7 +12,11 @@ import {
 
 const Footer = () => {
   return (
-    <Flex bg="brand.tertiary" p={"20px 100px"} w={"100%"}>
+    <Flex
+      bg="brand.secondary"
+      padding={{ base: "0px 20px", md: "0px 50px", lg: "0px 120px" }}
+      w={"100%"}
+    >
       Footer
     </Flex>
   );

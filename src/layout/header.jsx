@@ -16,16 +16,25 @@ const Header = () => {
   const navigate = useNavigate();
 
   return (
-    <Flex bg="brand.secondary" w={"100%"} p={"10px 100px"} alignItems="center">
-      <Flex w={"100%"} alignItems="center">
-        {/* Logo */}
-        <Link href="/" _hover={{ textDecoration: "none" }}>
-          <Image src={Logo} alt="ScarletHacks2025Logo" h={"75px"} />
-        </Link>
-      </Flex>
+    <Flex
+      bg="brand.background"
+      w={"100%"}
+      padding={{ base: "20px 20px", md: "20px 50px", lg: "20px 120px" }}
+      alignItems="center"
+      justifyContent={"space-between"}
+    >
+      {/* Logo */}
+      <Link href="/" _hover={{ textDecoration: "none" }}>
+        <Image
+          src={Logo}
+          alt="ScarletHacks2025Logo"
+          h={"75px"}
+          minWidth={"200px"}
+        />
+      </Link>
 
       <Flex alignItems="center">
-        <HStack spacing={6} ml={8} display={{ base: "none", md: "flex" }}>
+        <HStack spacing={6} ml={8} display={{ base: "none", lg: "flex" }}>
           <Link
             href={`/category/${1}`}
             color="brand.text"

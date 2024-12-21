@@ -19,7 +19,11 @@ const Layout = ({ children }) => {
     <Flex margin="0" transition="0.5s ease-out">
       <Flex wrap="wrap" w="100%">
         {!shouldHideHeaderFooter && <Header />}
-        <Flex width="full" as="main" padding={"0px 100px"}>
+        <Flex
+          width="full"
+          as="main"
+          padding={{ base: "0px 20px", md: "0px 50px", lg: "0px 120px" }}
+        >
           {children}
         </Flex>
         {!shouldHideHeaderFooter && <Footer />}
