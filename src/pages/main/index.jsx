@@ -6,12 +6,50 @@ import {
   Box,
   VStack,
   Heading,
+  Grid,
+  FormControl,
+  Container,
+  Input,
+  Textarea,
+  Accordion,
+  AccordionItem,
+  AccordionButton,
+  AccordionPanel,
+  Icon,
+  calc,
 } from "@chakra-ui/react";
 import MinimalistLogo from "../../assets/ScarletHacks2025MinimalistLogo.png";
+import BGLogo from "../../assets/MinimalistLogoBG.png";
+import ContactUsIllustration from "../../assets/contact-us-illustration.png";
+import RegisterIllustration from "../../assets/Register.png";
 import track1 from "../../assets/track1.png";
 import track2 from "../../assets/track2.png";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
+import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+
+const ScheduleItem = ({ time, event }) => (
+  <Grid templateColumns="1fr auto" gap={24} w="100%">
+    <Text fontSize="2xl">{event}</Text>
+    <Text fontSize="2xl">{time}</Text>
+  </Grid>
+);
+
+const DaySchedule = ({ day, date, events }) => (
+  <Box w="100%">
+    <Text color="brand.primary" fontSize="3xl" fontWeight={"600"}>
+      DAY {day}
+    </Text>
+    <Text fontSize="2xl" mb={2} fontWeight={"600"}>
+      {date}
+    </Text>
+    <VStack align="stretch" spacing={2}>
+      {events.map((event, index) => (
+        <ScheduleItem key={index} {...event} />
+      ))}
+    </VStack>
+  </Box>
+);
 
 export const MainPage = () => {
   const navigate = useNavigate();
@@ -59,14 +97,98 @@ export const MainPage = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const scheduleData = {
+    day1: {
+      date: "Saturday, April 5, 2025",
+      events: [
+        { event: "Registration and Breakfast", time: "8:00 AM" },
+        { event: "Opening Ceremony", time: "9:00 AM" },
+        { event: "Hacking Starts", time: "10:00 AM" },
+        { event: "Lunch", time: "12:00 PM" },
+        { event: "Pre-Judging", time: "2:00 PM" },
+        { event: "Dinner", time: "6:00 PM" },
+      ],
+    },
+    day2: {
+      date: "Sunday, April 6, 2025",
+      events: [
+        { event: "Breakfast", time: "8:00 AM" },
+        { event: "Hacking Ends", time: "10:00 AM" },
+        { event: "Judging", time: "10:00 PM" },
+        { event: "Lunch", time: "12:00 PM" },
+        { event: "Closing ceremony & awards", time: "1:00 PM" },
+      ],
+    },
+  };
+
+  const faqData = [
+    {
+      question: "What is ScarletHacks?",
+      answer:
+        "ScarletHacks is Illinois Tech's biggest annual hackathon, uniting students from across the Chicagoland area to innovate, collaborate, and tackle real-world challenges through technology.",
+    },
+    {
+      question: "When is ScarletHacks?",
+      answer: "April 5th - 6th, 2025.",
+    },
+    {
+      question: "What's the cost?",
+      answer:
+        "Admission is free and includes mentors, food, swag, resources, and so much more!",
+    },
+    {
+      question: "Can I attend ScarletHacks virtually?",
+      answer: "Unfortunately, ScarletHacks is an in-person only hackathon.",
+    },
+    {
+      question: "Who can register?",
+      answer:
+        "This event is open to anyone of all skill levels - and it's all free!",
+    },
+  ];
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    school: "",
+    phone: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+    // Add your form submission logic here
+
+    // Optional: Clear form after submission
+    setFormData({
+      firstName: "",
+      lastName: "",
+      school: "",
+      phone: "",
+      email: "",
+      message: "",
+    });
+  };
+
   return (
-    <Flex w="100%" flexDirection={"column"}>
+    <Flex w="100%" flexDirection={"column"} position={"relative"}>
       {/* INFO & LOGO */}
       <Flex
         w="100%"
         flexDirection={"row"}
         justifyContent={"space-between"}
         position={"relative"}
+        overflow={"hidden"}
       >
         <Flex
           _before={{
@@ -124,6 +246,7 @@ export const MainPage = () => {
               size="lg"
               width={"200px"}
               fontSize={"xl"}
+              _hover={{ bg: "red.700" }}
             >
               Register
             </Button>
@@ -144,12 +267,23 @@ export const MainPage = () => {
         </Flex>
       </Flex>
 
+      <Image
+        src={BGLogo}
+        alt="ScarletHacks2025MinimalistLogo"
+        maxWidth={"200px"}
+        position={"absolute"}
+        top={{ base: "250px", md: "350px", lg: "500" }}
+        left={{ base: "-120px", md: "-190px", lg: "-210px" }}
+        zIndex={-1}
+        opacity={0.5}
+      />
+
       {/* COUNTDOWN CLOCK */}
       <Flex
         justifyContent={"center"}
         alignItems={"center"}
         gap={{ base: "10px", md: "25px" }}
-        margin={"50px 0"}
+        margin={"50px 0px 0px 0px"}
       >
         <Flex
           w={{ base: "80px", md: "150px", lg: "180px" }}
@@ -269,12 +403,23 @@ export const MainPage = () => {
         </Flex>
       </Flex>
 
+      <Image
+        src={BGLogo}
+        alt="ScarletHacks2025MinimalistLogo"
+        maxWidth={"200px"}
+        position={"absolute"}
+        top={{ base: "450px", md: "550px", lg: "800" }}
+        right={{ base: "-120px", md: "-180px", lg: "-220px" }}
+        zIndex={-1}
+        opacity={0.5}
+      />
+
       {/* TRACKS */}
       <Flex
         flexDirection={"column"}
         justifyContent={"center"}
         alignItems={"center"}
-        margin={"50px 0"}
+        margin={"50px 0px 0px 0px"}
         gap={"20px"}
       >
         <Text
@@ -294,6 +439,8 @@ export const MainPage = () => {
           alignItems={"center"}
           gap={"100px"}
           w="100%"
+          maxWidth={"1000px"}
+          px={{ base: 8, md: 0 }}
         >
           <Image
             src={track1}
@@ -307,7 +454,12 @@ export const MainPage = () => {
             maxWidth={"600px"}
             alignItems={"center"}
           >
-            <Text color="brand.primary" fontSize="3xl" fontWeight={"500"}>
+            <Text
+              color="brand.primary"
+              fontSize="3xl"
+              fontWeight={"500"}
+              textAlign={"center"}
+            >
               Environmental Sustainability
             </Text>
             <Image
@@ -332,6 +484,8 @@ export const MainPage = () => {
           alignItems={"center"}
           gap={"20px"}
           w="100%"
+          maxWidth={"1000px"}
+          px={{ base: 8, md: 0 }}
         >
           <VStack
             align="flex-start"
@@ -339,7 +493,12 @@ export const MainPage = () => {
             maxWidth={"600px"}
             alignItems={"center"}
           >
-            <Text color="brand.primary" fontSize="3xl" fontWeight={"500"}>
+            <Text
+              color="brand.primary"
+              fontSize="3xl"
+              fontWeight={"500"}
+              textAlign={"center"}
+            >
               Social Equity & Inclusion
             </Text>
             <Image
@@ -365,6 +524,326 @@ export const MainPage = () => {
             display={{ base: "none", md: "block" }}
           />
         </Flex>
+      </Flex>
+
+      {/* SCHEDULE */}
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        margin={"50px 0px 0px 0px"}
+        gap={"20px"}
+      >
+        <Text
+          fontSize={"4xl"}
+          fontWeight={"600"}
+          color={"brand.primary"}
+          textAlign={"center"}
+          margin={"0"}
+          textTransform={"uppercase"}
+          letterSpacing={"3px"}
+        >
+          Schedule
+        </Text>
+        <Grid
+          templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+          gap={24}
+          maxWidth={"1000px"}
+          w="100%"
+          px={{ base: 8, md: 0 }}
+        >
+          <DaySchedule day="1" {...scheduleData.day1} />
+          <DaySchedule day="2" {...scheduleData.day2} />
+        </Grid>
+      </Flex>
+
+      {/* PRIZES */}
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        margin={"50px 0px 0px 0px"}
+        gap={"20px"}
+      >
+        <Text
+          fontSize={"4xl"}
+          fontWeight={"600"}
+          color={"brand.primary"}
+          textAlign={"center"}
+          margin={"0"}
+          textTransform={"uppercase"}
+          letterSpacing={"3px"}
+        >
+          Prizes
+        </Text>
+        <Text>coming soon...</Text>
+      </Flex>
+
+      {/* SPONSORS */}
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        margin={"50px 0px 0px 0px"}
+        gap={"20px"}
+      >
+        <Text
+          fontSize={"4xl"}
+          fontWeight={"600"}
+          color={"brand.primary"}
+          textAlign={"center"}
+          margin={"0"}
+          textTransform={"uppercase"}
+          letterSpacing={"3px"}
+        >
+          Sponsors
+        </Text>
+        <Text>coming soon...</Text>
+      </Flex>
+
+      {/* CONTACT US */}
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        margin={"50px 0px 0px 0px"}
+        gap={"20px"}
+      >
+        <Text
+          fontSize={"4xl"}
+          fontWeight={"600"}
+          color={"brand.primary"}
+          textAlign={"center"}
+          margin={"0"}
+          textTransform={"uppercase"}
+          letterSpacing={"3px"}
+        >
+          Contact us
+        </Text>
+        <Container maxW="1000px" py={4}>
+          <Flex
+            direction={{ base: "column", md: "row" }}
+            gap={8}
+            align="center"
+          >
+            <Box flex={1}>
+              <Image
+                src={ContactUsIllustration}
+                alt="Contact illustration"
+                maxW={{ base: "300px", lg: "350px", xl: "400px" }}
+                mx="auto"
+              />
+            </Box>
+
+            <Box flex={2} width={{ base: "90%", md: "auto" }}>
+              <form onSubmit={handleSubmit}>
+                <Grid
+                  templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+                  gap={6}
+                  mb={6}
+                >
+                  <FormControl>
+                    <Input
+                      placeholder="FIRST NAME"
+                      bg="brand.tertiary"
+                      size="lg"
+                      borderRadius="md"
+                      borderColor="brand.tertiary"
+                      name="firstName"
+                      value={formData.firstName}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+
+                  <FormControl>
+                    <Input
+                      placeholder="LAST NAME"
+                      bg="brand.tertiary"
+                      size="lg"
+                      borderRadius="md"
+                      borderColor="brand.tertiary"
+                      name="lastName"
+                      value={formData.lastName}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                </Grid>
+
+                <FormControl mb={6}>
+                  <Input
+                    placeholder="SCHOOL"
+                    bg="brand.tertiary"
+                    size="lg"
+                    borderRadius="md"
+                    borderColor="brand.tertiary"
+                    name="school"
+                    value={formData.school}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <Grid
+                  templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+                  gap={6}
+                  mb={6}
+                >
+                  <FormControl>
+                    <Input
+                      placeholder="PHONE NUMBER"
+                      bg="brand.tertiary"
+                      size="lg"
+                      borderRadius="md"
+                      borderColor="brand.tertiary"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+
+                  <FormControl>
+                    <Input
+                      placeholder="EMAIL"
+                      type="email"
+                      bg="brand.tertiary"
+                      size="lg"
+                      borderRadius="md"
+                      borderColor="brand.tertiary"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+                </Grid>
+
+                <FormControl mb={6}>
+                  <Textarea
+                    placeholder="MESSAGE"
+                    bg="brand.tertiary"
+                    size="lg"
+                    borderRadius="md"
+                    rows={6}
+                    borderColor="brand.tertiary"
+                    minHeight={"150px"}
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                  />
+                </FormControl>
+
+                <Button
+                  variant={"custom"}
+                  type="submit"
+                  w="100%"
+                  bg="brand.primary"
+                  color="white"
+                  size="lg"
+                  _hover={{ bg: "red.700" }}
+                >
+                  SUBMIT
+                </Button>
+              </form>
+            </Box>
+          </Flex>
+        </Container>
+      </Flex>
+
+      {/* FAQ */}
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        margin={"50px 0px 0px 0px"}
+        gap={"20px"}
+      >
+        <Text
+          fontSize={"4xl"}
+          fontWeight={"600"}
+          color={"brand.primary"}
+          textAlign={"center"}
+          margin={"0"}
+          textTransform={"uppercase"}
+          letterSpacing={"3px"}
+        >
+          FAQs
+        </Text>
+        <Container maxW="1000px" px={{ base: 8, md: 0 }}>
+          <Accordion allowToggle>
+            {faqData.map((faq, index) => (
+              <AccordionItem key={index} border="none">
+                {({ isExpanded }) => (
+                  <>
+                    <AccordionButton
+                      p={4}
+                      _hover={{ bg: "transparent" }}
+                      _expanded={{ bg: "transparent" }}
+                    >
+                      <Box flex="1" textAlign="left">
+                        <Text fontSize="2xl" fontWeight="medium">
+                          {faq.question}
+                        </Text>
+                      </Box>
+                      <Icon
+                        as={isExpanded ? MinusIcon : AddIcon}
+                        fontSize="20px"
+                      />
+                    </AccordionButton>
+                    <AccordionPanel pb={4}>
+                      <Text fontSize="xl">{faq.answer}</Text>
+                    </AccordionPanel>
+                  </>
+                )}
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </Container>
+      </Flex>
+
+      {/* REGISTER */}
+      <Flex
+        flexDirection={"column"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        margin={"50px 0px"}
+        gap={"20px"}
+      >
+        <Container maxW="1000px" px={{ base: 10, md: 4 }}>
+          <Flex
+            direction={{ base: "column-reverse", md: "row" }}
+            align="center"
+            justify="space-between"
+            gap={8}
+          >
+            <Box maxW="550px">
+              <Text fontSize="2xl" mb={4}>
+                Don't miss out on Illinois Tech's biggest hackathon, unleash
+                your creativity and make an impact!
+              </Text>
+              <Text fontSize="2xl" mb={6}>
+                Register now if you haven't already!
+              </Text>
+              <Button
+                variant={"custom"}
+                size="lg"
+                bg="brand.primary"
+                color="white"
+                _hover={{ bg: "red.700" }}
+                w="100%"
+                letterSpacing={"1px"}
+                textTransform="uppercase"
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                Register
+              </Button>
+            </Box>
+            <Image
+              src={RegisterIllustration}
+              alt="People walking"
+              maxW={{ base: "300px", md: "350px" }}
+            />
+          </Flex>
+        </Container>
       </Flex>
     </Flex>
   );

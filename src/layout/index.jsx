@@ -23,6 +23,8 @@ const Layout = ({ children }) => {
           width="full"
           as="main"
           padding={{ base: "0px 20px", md: "0px 50px", lg: "0px 120px" }}
+          position={"relative"}
+          overflow={"hidden"}
         >
           {children}
         </Flex>

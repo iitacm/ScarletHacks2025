@@ -8,16 +8,112 @@ import {
   HStack,
   Icon,
   Image,
+  Container,
+  Grid,
+  Heading,
 } from "@chakra-ui/react";
+import FooterLogo from "../assets/FooterLogo.png";
 
 const Footer = () => {
+  const socialLinks = [
+    { name: "Instagram", href: "#" },
+    { name: "Facebook", href: "#" },
+    { name: "LinkedIn", href: "#" },
+    { name: "X", href: "#" },
+  ];
+
+  const quickLinks = [
+    { name: "Register Now", href: "#" },
+    { name: "Become a Sponsor", href: "#" },
+    { name: "FAQs", href: "#" },
+  ];
   return (
     <Flex
       bg="brand.secondary"
       padding={{ base: "0px 20px", md: "0px 50px", lg: "0px 120px" }}
       w={"100%"}
     >
-      Footer
+      <Box as="footer" pt={12} pb={2} w={"100%"}>
+        <Container maxW="1000px">
+          <Grid
+            templateColumns={{ base: "1fr", md: "repeat(3, 1fr)" }}
+            gap={8}
+            justifyItems={{ base: "center", md: "none" }}
+          >
+            {/* Logo Section */}
+            <Box>
+              <Image src={FooterLogo} alt="Scarlet Hacks 2025" maxW="250px" />
+            </Box>
+
+            {/* Stay Connected Section */}
+            <VStack align={{ base: "center", md: "flex-start" }} spacing={4}>
+              <Text
+                as="h3"
+                fontSize="2xl"
+                color="brand.primary"
+                mb={2}
+                fontWeight={"600"}
+              >
+                Stay connected
+              </Text>
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  color="black"
+                  _hover={{ color: "brand.primary" }}
+                  fontSize={"xl"}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </VStack>
+
+            {/* Quick Links Section */}
+            <VStack align={{ base: "center", md: "flex-start" }} spacing={4}>
+              <Text
+                as="h3"
+                fontSize="2xl"
+                color="brand.primary"
+                mb={2}
+                fontWeight={"600"}
+              >
+                Links
+              </Text>
+              {quickLinks.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  color="black"
+                  _hover={{ color: "brand.primary" }}
+                  fontSize={"xl"}
+                >
+                  {link.name}
+                </Link>
+              ))}
+            </VStack>
+          </Grid>
+
+          {/* Footer Bottom Text */}
+          <HStack
+            justify="center"
+            mt={8}
+            spacing={1}
+            fontSize={"xl"}
+            flexWrap={"wrap"}
+          >
+            <Text>Made with</Text>
+            <Box as="span" color="brand.primary">
+              &#x2665;&#xfe0f;
+            </Box>
+            <Text>by the</Text>
+            <Text color="brand.primary" fontWeight="bold">
+              ScarletHacks
+            </Text>
+            <Text>team</Text>
+          </HStack>
+        </Container>
+      </Box>
     </Flex>
   );
 };
