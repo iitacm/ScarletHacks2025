@@ -16,17 +16,24 @@ import FooterLogo from "../assets/FooterLogo.png";
 
 const Footer = () => {
   const socialLinks = [
-    { name: "Instagram", href: "#" },
-    { name: "Facebook", href: "#" },
-    { name: "LinkedIn", href: "#" },
-    { name: "X", href: "#" },
+    { name: "Instagram", href: "https://www.instagram.com/acm_iit/" },
+    { name: "LinkedIn", href: "https://www.linkedin.com/in/acm-iit/" },
+    { name: "Discord", href: "https://discord.com/invite/SJS8468yHc" },
+    { name: "X", href: "https://x.com/acm_iit" },
   ];
 
   const quickLinks = [
-    { name: "Register Now", href: "#" },
-    { name: "Become a Sponsor", href: "#" },
-    { name: "FAQs", href: "#" },
+    { name: "Register Now", href: "/register" },
+    { name: "FAQs", href: "faqsSection" },
   ];
+
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <Flex
       bg="brand.secondary"
@@ -63,6 +70,7 @@ const Footer = () => {
                   color="black"
                   _hover={{ color: "brand.primary" }}
                   fontSize={"xl"}
+                  target="_blank"
                 >
                   {link.name}
                 </Link>

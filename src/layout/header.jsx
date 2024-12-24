@@ -23,19 +23,26 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../assets/logo.png";
 import { HamburgerIcon } from "@chakra-ui/icons";
 
-const Header = () => {
+const Header = ({ sectionRefs }) => {
   const navigate = useNavigate();
 
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "#about" },
-    { name: "Schedule", path: "#schedule" },
-    { name: "Tracks", path: "#tracks" },
-    { name: "FAQ", path: "#faq" },
-    { name: "Contact Us", path: "#contact" },
+    { name: "About", path: "aboutSection" },
+    { name: "Schedule", path: "scheduleSection" },
+    { name: "Tracks", path: "tracksSection" },
+    { name: "Prizes", path: "prizesSection" },
+    { name: "FAQ", path: "faqsSection" },
+    { name: "Contact Us", path: "contactUsSection" },
   ];
+
+  const handleScroll = (id) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <Flex
@@ -58,7 +65,7 @@ const Header = () => {
       <Flex alignItems="center">
         <HStack spacing={6} ml={8} display={{ base: "none", lg: "flex" }}>
           <Link
-            href={`/category/${1}`}
+            onClick={() => handleScroll("tracksSection")}
             color="brand.text"
             fontSize="xl"
             fontWeight="500"
@@ -66,26 +73,29 @@ const Header = () => {
             Tracks
           </Link>
           <Link
-            href={`/category/${2}`}
+            href={`#prizes`}
             color="brand.text"
             fontSize="xl"
             fontWeight="500"
+            onClick={() => handleScroll("prizesSection")}
           >
             Prizes
           </Link>
           <Link
-            href={`/category/${3}`}
+            href={`#sponsors`}
             color="brand.text"
             fontSize="xl"
             fontWeight="500"
+            onClick={() => handleScroll("sponsorsSection")}
           >
             Sponsors
           </Link>
           <Link
-            href={`/category/${4}`}
+            href={`#faq`}
             color="brand.text"
             fontSize="xl"
             fontWeight="500"
+            onClick={() => handleScroll("faqsSection")}
           >
             FAQs
           </Link>
@@ -106,34 +116,55 @@ const Header = () => {
       {/* Navigation Links */}
       <>
         <IconButton
-          icon={<HamburgerIcon fontSize="20px" />}
+          icon={<HamburgerIcon fontSize="30px" />}
           onClick={onOpen}
           variant="ghost"
-          size="2xl"
+          size="lg"
           aria-label="Open Menu"
           display={{ base: "flex", lg: "none" }}
         />
 
-        <Drawer isOpen={isOpen} placement="right" onClose={onClose} size="xs">
+        <Drawer
+          isOpen={isOpen}
+          placement="right"
+          onClose={onClose}
+          size="xs"
+          preserveScrollBarGap={true}
+          blockScrollOnMount={false}
+          autoFocus={false}
+          returnFocusOnClose={false}
+        >
           <DrawerOverlay />
           <DrawerContent>
             <DrawerCloseButton
-              size={"3xl"}
+              size={"5xl"}
               position={"absolute"}
               margin={"15px"}
+              fontSize={"20px"}
             />
-            <DrawerHeader borderBottomWidth="1px">Menu</DrawerHeader>
+            {/* <DrawerHeader borderBottomWidth="1px"></DrawerHeader> */}
 
             <DrawerBody>
-              <VStack spacing={4} align="stretch" mt={4}>
+              <VStack
+                spacing={4}
+                align="stretch"
+                mt={12}
+                alignItems={"center"}
+                h={"60%"}
+                justifyContent={"space-around"}
+              >
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
-                    href={link.path}
-                    fontSize="lg"
+                    fontSize="xl"
                     fontWeight="medium"
                     _hover={{ color: "red.600" }}
-                    onClick={onClose}
+                    onClick={() => {
+                      handleScroll(`${link.path}`);
+                      setTimeout(() => {
+                        onClose();
+                      }, 1000);
+                    }}
                   >
                     {link.name}
                   </Link>

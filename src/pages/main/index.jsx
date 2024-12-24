@@ -189,6 +189,7 @@ export const MainPage = () => {
         justifyContent={"space-between"}
         position={"relative"}
         overflow={"hidden"}
+        id="aboutSection"
       >
         <Flex
           _before={{
@@ -421,6 +422,7 @@ export const MainPage = () => {
         alignItems={"center"}
         margin={"50px 0px 0px 0px"}
         gap={"20px"}
+        id="tracksSection"
       >
         <Text
           fontSize={"4xl"}
@@ -533,6 +535,7 @@ export const MainPage = () => {
         alignItems={"center"}
         margin={"50px 0px 0px 0px"}
         gap={"20px"}
+        id="scheduleSection"
       >
         <Text
           fontSize={"4xl"}
@@ -564,6 +567,7 @@ export const MainPage = () => {
         alignItems={"center"}
         margin={"50px 0px 0px 0px"}
         gap={"20px"}
+        id="prizesSection"
       >
         <Text
           fontSize={"4xl"}
@@ -586,6 +590,7 @@ export const MainPage = () => {
         alignItems={"center"}
         margin={"50px 0px 0px 0px"}
         gap={"20px"}
+        id="sponsorsSection"
       >
         <Text
           fontSize={"4xl"}
@@ -608,6 +613,7 @@ export const MainPage = () => {
         alignItems={"center"}
         margin={"50px 0px 0px 0px"}
         gap={"20px"}
+        id="contactUsSection"
       >
         <Text
           fontSize={"4xl"}
@@ -754,6 +760,7 @@ export const MainPage = () => {
         alignItems={"center"}
         margin={"50px 0px 0px 0px"}
         gap={"20px"}
+        id="faqsSection"
       >
         <Text
           fontSize={"4xl"}
