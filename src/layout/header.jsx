@@ -53,7 +53,7 @@ const Header = ({ sectionRefs }) => {
       justifyContent={"space-between"}
     >
       {/* Logo */}
-      <Link href="/" _hover={{ textDecoration: "none" }}>
+      <Link onClick={() => navigate("/")} _hover={{ textDecoration: "none" }}>
         <Image
           src={Logo}
           alt="ScarletHacks2025Logo"
