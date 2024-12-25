@@ -13,18 +13,16 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import FooterLogo from "../assets/FooterLogo.png";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
+
   const socialLinks = [
     { name: "Instagram", href: "https://www.instagram.com/acm_iit/" },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/acm-iit/" },
     { name: "Discord", href: "https://discord.com/invite/SJS8468yHc" },
     { name: "X", href: "https://x.com/acm_iit" },
-  ];
-
-  const quickLinks = [
-    { name: "Register Now", href: "/register" },
-    { name: "FAQs", href: "faqsSection" },
   ];
 
   const handleScroll = (id) => {
@@ -88,17 +86,29 @@ const Footer = () => {
               >
                 Links
               </Text>
-              {quickLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  color="black"
-                  _hover={{ color: "brand.primary" }}
-                  fontSize={"xl"}
-                >
-                  {link.name}
-                </Link>
-              ))}
+              <Link
+                color="black"
+                _hover={{ color: "brand.primary" }}
+                fontSize={"xl"}
+                onClick={() => {
+                  navigate("/register");
+                }}
+              >
+                Register Now
+              </Link>
+              <Link
+                color="black"
+                _hover={{ color: "brand.primary" }}
+                fontSize={"xl"}
+                onClick={() => {
+                  navigate("/");
+                  setTimeout(() => {
+                    handleScroll("faqsSection");
+                  }, 1000);
+                }}
+              >
+                FAQs
+              </Link>
             </VStack>
           </Grid>
 

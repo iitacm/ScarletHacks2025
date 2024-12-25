@@ -160,8 +160,9 @@ const Header = ({ sectionRefs }) => {
                     fontWeight="medium"
                     _hover={{ color: "red.600" }}
                     onClick={() => {
-                      handleScroll(`${link.path}`);
+                      navigate("/");
                       setTimeout(() => {
+                        handleScroll(`${link.path}`);
                         onClose();
                       }, 1000);
                     }}

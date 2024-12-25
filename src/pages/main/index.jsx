@@ -255,8 +255,10 @@ export const MainPage = () => {
           <Flex
             justifyContent={"center"}
             w={"45%"}
+            h={"50%"}
             flexWrap={"wrap"}
             display={{ base: "none", md: "flex" }}
+            alignItems={"center"}
           >
             <Image
               src={MinimalistLogo}
@@ -271,12 +273,12 @@ export const MainPage = () => {
       <Image
         src={BGLogo}
         alt="ScarletHacks2025MinimalistLogo"
-        maxWidth={"200px"}
         position={"absolute"}
         top={{ base: "250px", md: "350px", lg: "500" }}
         left={{ base: "-120px", md: "-190px", lg: "-210px" }}
         zIndex={-1}
         opacity={0.5}
+        maxW={{ base: "100px", md: "200px" }}
       />
 
       {/* COUNTDOWN CLOCK */}
@@ -413,6 +415,7 @@ export const MainPage = () => {
         right={{ base: "-120px", md: "-180px", lg: "-220px" }}
         zIndex={-1}
         opacity={0.5}
+        maxW={{ base: "100px", md: "200px" }}
       />
 
       {/* TRACKS */}
