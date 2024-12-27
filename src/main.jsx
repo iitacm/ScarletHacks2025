@@ -8,7 +8,7 @@ import theme from "./styles/theme.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <BrowserRouter basename="/ScarletHacks2025">
+    <BrowserRouter basename="/ScarletHacks2025/">
       <ChakraProvider theme={theme}>
         <App />
       </ChakraProvider>

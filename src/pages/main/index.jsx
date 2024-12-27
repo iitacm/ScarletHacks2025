@@ -27,6 +27,11 @@ import track2 from "../../assets/track2.png";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
+import {
+  FadeInLeft,
+  FadeInBottom,
+  FadeInRight,
+} from "../../components/Animations";
 
 const ScheduleItem = ({ time, event }) => (
   <Grid templateColumns="1fr auto" gap={24} w="100%">
@@ -252,6 +257,7 @@ export const MainPage = () => {
               Register
             </Button>
           </VStack>
+
           <Flex
             justifyContent={"center"}
             w={"45%"}
@@ -282,129 +288,132 @@ export const MainPage = () => {
       />
 
       {/* COUNTDOWN CLOCK */}
-      <Flex
-        justifyContent={"center"}
-        alignItems={"center"}
-        gap={{ base: "10px", md: "25px" }}
-        margin={"50px 0px 0px 0px"}
-      >
+      <FadeInBottom>
         <Flex
-          w={{ base: "80px", md: "150px", lg: "180px" }}
-          h={{ base: "80px", md: "150px", lg: "180px" }}
-          bgColor={"brand.tertiary"}
-          alignItems={"center"}
           justifyContent={"center"}
-          position={"relative"}
-          borderRadius={"5px"}
-        >
-          <Text
-            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-            color={"brand.primary"}
-            fontWeight={"500"}
-          >
-            {timeLeft.days ?? "00"}
-          </Text>
-          <Text
-            textTransform={"uppercase"}
-            textAlign={"end"}
-            position={"absolute"}
-            bottom={"0"}
-            right={"0"}
-            margin={{ base: "3px", md: "10px" }}
-            fontWeight={"500"}
-            fontSize={{ base: "xs", md: "lg", lg: "xl" }}
-          >
-            days
-          </Text>
-        </Flex>
-        <Flex
-          w={{ base: "80px", md: "150px", lg: "180px" }}
-          h={{ base: "80px", md: "150px", lg: "180px" }}
-          bgColor={"brand.tertiary"}
           alignItems={"center"}
-          justifyContent={"center"}
-          position={"relative"}
-          borderRadius={"5px"}
+          gap={{ base: "10px", md: "25px" }}
+          margin={"50px 0px 0px 0px"}
+          w="100%"
         >
-          <Text
-            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-            color={"brand.primary"}
-            fontWeight={"500"}
+          <Flex
+            w={{ base: "80px", md: "150px", lg: "180px" }}
+            h={{ base: "80px", md: "150px", lg: "180px" }}
+            bgColor={"brand.tertiary"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            position={"relative"}
+            borderRadius={"5px"}
           >
-            {timeLeft.hours ?? "00"}
-          </Text>
-          <Text
-            textTransform={"uppercase"}
-            textAlign={"end"}
-            position={"absolute"}
-            bottom={"0"}
-            right={"0"}
-            margin={{ base: "3px", md: "10px" }}
-            fontWeight={"500"}
-            fontSize={{ base: "xs", md: "lg", lg: "xl" }}
+            <Text
+              fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
+              color={"brand.primary"}
+              fontWeight={"500"}
+            >
+              {timeLeft.days ?? "00"}
+            </Text>
+            <Text
+              textTransform={"uppercase"}
+              textAlign={"end"}
+              position={"absolute"}
+              bottom={"0"}
+              right={"0"}
+              margin={{ base: "3px", md: "10px" }}
+              fontWeight={"500"}
+              fontSize={{ base: "xs", md: "lg", lg: "xl" }}
+            >
+              days
+            </Text>
+          </Flex>
+          <Flex
+            w={{ base: "80px", md: "150px", lg: "180px" }}
+            h={{ base: "80px", md: "150px", lg: "180px" }}
+            bgColor={"brand.tertiary"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            position={"relative"}
+            borderRadius={"5px"}
           >
-            hours
-          </Text>
+            <Text
+              fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
+              color={"brand.primary"}
+              fontWeight={"500"}
+            >
+              {timeLeft.hours ?? "00"}
+            </Text>
+            <Text
+              textTransform={"uppercase"}
+              textAlign={"end"}
+              position={"absolute"}
+              bottom={"0"}
+              right={"0"}
+              margin={{ base: "3px", md: "10px" }}
+              fontWeight={"500"}
+              fontSize={{ base: "xs", md: "lg", lg: "xl" }}
+            >
+              hours
+            </Text>
+          </Flex>
+          <Flex
+            w={{ base: "80px", md: "150px", lg: "180px" }}
+            h={{ base: "80px", md: "150px", lg: "180px" }}
+            bgColor={"brand.tertiary"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            position={"relative"}
+            borderRadius={"5px"}
+          >
+            <Text
+              fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
+              color={"brand.primary"}
+              fontWeight={"500"}
+            >
+              {timeLeft.minutes ?? "00"}
+            </Text>
+            <Text
+              textTransform={"uppercase"}
+              textAlign={"end"}
+              position={"absolute"}
+              bottom={"0"}
+              right={"0"}
+              margin={{ base: "3px", md: "10px" }}
+              fontWeight={"500"}
+              fontSize={{ base: "xs", md: "lg", lg: "xl" }}
+            >
+              minutes
+            </Text>
+          </Flex>
+          <Flex
+            w={{ base: "80px", md: "150px", lg: "180px" }}
+            h={{ base: "80px", md: "150px", lg: "180px" }}
+            bgColor={"brand.tertiary"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            position={"relative"}
+            borderRadius={"5px"}
+          >
+            <Text
+              fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
+              color={"brand.primary"}
+              fontWeight={"500"}
+            >
+              {timeLeft.seconds ?? "00"}
+            </Text>
+            <Text
+              textTransform={"uppercase"}
+              textAlign={"end"}
+              position={"absolute"}
+              bottom={"0"}
+              right={"0"}
+              margin={{ base: "3px", md: "10px" }}
+              fontWeight={"500"}
+              fontSize={{ base: "xs", md: "lg", lg: "xl" }}
+            >
+              seconds
+            </Text>
+          </Flex>
         </Flex>
-        <Flex
-          w={{ base: "80px", md: "150px", lg: "180px" }}
-          h={{ base: "80px", md: "150px", lg: "180px" }}
-          bgColor={"brand.tertiary"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          position={"relative"}
-          borderRadius={"5px"}
-        >
-          <Text
-            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-            color={"brand.primary"}
-            fontWeight={"500"}
-          >
-            {timeLeft.minutes ?? "00"}
-          </Text>
-          <Text
-            textTransform={"uppercase"}
-            textAlign={"end"}
-            position={"absolute"}
-            bottom={"0"}
-            right={"0"}
-            margin={{ base: "3px", md: "10px" }}
-            fontWeight={"500"}
-            fontSize={{ base: "xs", md: "lg", lg: "xl" }}
-          >
-            minutes
-          </Text>
-        </Flex>
-        <Flex
-          w={{ base: "80px", md: "150px", lg: "180px" }}
-          h={{ base: "80px", md: "150px", lg: "180px" }}
-          bgColor={"brand.tertiary"}
-          alignItems={"center"}
-          justifyContent={"center"}
-          position={"relative"}
-          borderRadius={"5px"}
-        >
-          <Text
-            fontSize={{ base: "3xl", md: "5xl", lg: "8xl" }}
-            color={"brand.primary"}
-            fontWeight={"500"}
-          >
-            {timeLeft.seconds ?? "00"}
-          </Text>
-          <Text
-            textTransform={"uppercase"}
-            textAlign={"end"}
-            position={"absolute"}
-            bottom={"0"}
-            right={"0"}
-            margin={{ base: "3px", md: "10px" }}
-            fontWeight={"500"}
-            fontSize={{ base: "xs", md: "lg", lg: "xl" }}
-          >
-            seconds
-          </Text>
-        </Flex>
-      </Flex>
+      </FadeInBottom>
 
       <Image
         src={BGLogo}
@@ -427,434 +436,462 @@ export const MainPage = () => {
         gap={"20px"}
         id="tracksSection"
       >
-        <Text
-          fontSize={"4xl"}
-          fontWeight={"600"}
-          color={"brand.primary"}
-          textAlign={"center"}
-          margin={"0"}
-          textTransform={"uppercase"}
-          letterSpacing={"3px"}
-        >
-          Tracks
-        </Text>
-        <Flex
-          flexDirection={{ base: "column", md: "row" }}
-          justifyContent={"center"}
-          alignItems={"center"}
-          gap={"100px"}
-          w="100%"
-          maxWidth={"1000px"}
-          px={{ base: 8, md: 0 }}
-        >
-          <Image
-            src={track1}
-            alt="evironment-sustainability-image"
-            maxW={{ base: "200px", md: "300px", lg: "400px" }}
-            display={{ base: "none", md: "block" }}
-          />
-          <VStack
-            align="flex-start"
-            spacing={6}
-            maxWidth={"600px"}
-            alignItems={"center"}
+        <FadeInBottom>
+          <Text
+            fontSize={"4xl"}
+            fontWeight={"600"}
+            color={"brand.primary"}
+            textAlign={"center"}
+            margin={"0"}
+            textTransform={"uppercase"}
+            letterSpacing={"3px"}
+            w={"100%"}
           >
-            <Text
-              color="brand.primary"
-              fontSize="3xl"
-              fontWeight={"500"}
-              textAlign={"center"}
-            >
-              Environmental Sustainability
-            </Text>
+            Tracks
+          </Text>
+        </FadeInBottom>
+
+        <FadeInLeft>
+          <Flex
+            flexDirection={{ base: "column", md: "row" }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={"100px"}
+            w="100%"
+            maxWidth={"1000px"}
+            px={{ base: 8, md: 0 }}
+          >
             <Image
               src={track1}
               alt="evironment-sustainability-image"
-              maxWidth={"250px"}
-              display={{ base: "block", md: "none" }}
+              maxW={{ base: "200px", md: "300px", lg: "400px" }}
+              display={{ base: "none", md: "block" }}
             />
-            <Text fontSize="2xl">
-              Projects in this track target pressing environmental issues,
-              encouraging innovations that contribute to a healthier planet.
-            </Text>
-            <Text fontSize="2xl">
-              Examples include clean energy, waste reduction, sustainable
-              agriculture, and climate change mitigation.
-            </Text>
-          </VStack>
-        </Flex>
-        <Flex
-          flexDirection={{ base: "column", md: "row" }}
-          justifyContent={"center"}
-          alignItems={"center"}
-          gap={"20px"}
-          w="100%"
-          maxWidth={"1000px"}
-          px={{ base: 8, md: 0 }}
-        >
-          <VStack
-            align="flex-start"
-            spacing={6}
-            maxWidth={"600px"}
-            alignItems={"center"}
-          >
-            <Text
-              color="brand.primary"
-              fontSize="3xl"
-              fontWeight={"500"}
-              textAlign={"center"}
+            <VStack
+              align="flex-start"
+              spacing={6}
+              maxWidth={"600px"}
+              alignItems={"center"}
             >
-              Social Equity & Inclusion
-            </Text>
+              <Text
+                color="brand.primary"
+                fontSize="3xl"
+                fontWeight={"500"}
+                textAlign={"center"}
+              >
+                Environmental Sustainability
+              </Text>
+              <Image
+                src={track1}
+                alt="evironment-sustainability-image"
+                maxWidth={"250px"}
+                display={{ base: "block", md: "none" }}
+              />
+              <Text fontSize="2xl">
+                Projects in this track target pressing environmental issues,
+                encouraging innovations that contribute to a healthier planet.
+              </Text>
+              <Text fontSize="2xl">
+                Examples include clean energy, waste reduction, sustainable
+                agriculture, and climate change mitigation.
+              </Text>
+            </VStack>
+          </Flex>
+        </FadeInLeft>
+
+        <FadeInRight>
+          <Flex
+            flexDirection={{ base: "column", md: "row" }}
+            justifyContent={"center"}
+            alignItems={"center"}
+            gap={"20px"}
+            w="100%"
+            maxWidth={"1000px"}
+            px={{ base: 8, md: 0 }}
+          >
+            <VStack
+              align="flex-start"
+              spacing={6}
+              maxWidth={"600px"}
+              alignItems={"center"}
+            >
+              <Text
+                color="brand.primary"
+                fontSize="3xl"
+                fontWeight={"500"}
+                textAlign={"center"}
+              >
+                Social Equity & Inclusion
+              </Text>
+              <Image
+                src={track2}
+                alt="social-equity-and-inclusion-image"
+                maxWidth={"250px"}
+                display={{ base: "block", md: "none" }}
+              />
+              <Text fontSize="2xl">
+                This track invites participants to develop technologies and
+                tools that enhance access to essential resources for underserved
+                communities.
+              </Text>
+              <Text fontSize="2xl">
+                Examples include platforms for accessible education, healthcare
+                access, financial literacy, and community-driven development.
+              </Text>
+            </VStack>
             <Image
               src={track2}
               alt="social-equity-and-inclusion-image"
-              maxWidth={"250px"}
-              display={{ base: "block", md: "none" }}
+              maxW={{ base: "200px", md: "300px", lg: "400px" }}
+              display={{ base: "none", md: "block" }}
             />
-            <Text fontSize="2xl">
-              This track invites participants to develop technologies and tools
-              that enhance access to essential resources for underserved
-              communities.
-            </Text>
-            <Text fontSize="2xl">
-              Examples include platforms for accessible education, healthcare
-              access, financial literacy, and community-driven development.
-            </Text>
-          </VStack>
-          <Image
-            src={track2}
-            alt="social-equity-and-inclusion-image"
-            maxW={{ base: "200px", md: "300px", lg: "400px" }}
-            display={{ base: "none", md: "block" }}
-          />
-        </Flex>
+          </Flex>
+        </FadeInRight>
       </Flex>
 
       {/* SCHEDULE */}
-      <Flex
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        margin={"50px 0px 0px 0px"}
-        gap={"20px"}
-        id="scheduleSection"
-      >
-        <Text
-          fontSize={"4xl"}
-          fontWeight={"600"}
-          color={"brand.primary"}
-          textAlign={"center"}
-          margin={"0"}
-          textTransform={"uppercase"}
-          letterSpacing={"3px"}
-        >
-          Schedule
-        </Text>
-        <Grid
-          templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-          gap={24}
-          maxWidth={"1000px"}
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={"50px 0px 0px 0px"}
+          gap={"20px"}
+          id="scheduleSection"
           w="100%"
-          px={{ base: 8, md: 0 }}
         >
-          <DaySchedule day="1" {...scheduleData.day1} />
-          <DaySchedule day="2" {...scheduleData.day2} />
-        </Grid>
-      </Flex>
+          <Text
+            fontSize={"4xl"}
+            fontWeight={"600"}
+            color={"brand.primary"}
+            textAlign={"center"}
+            margin={"0"}
+            textTransform={"uppercase"}
+            letterSpacing={"3px"}
+          >
+            Schedule
+          </Text>
+
+          <Grid
+            templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+            gap={24}
+            maxWidth={"1000px"}
+            w="100%"
+            px={{ base: 8, md: 0 }}
+          >
+            <DaySchedule day="1" {...scheduleData.day1} />
+            <DaySchedule day="2" {...scheduleData.day2} />
+          </Grid>
+        </Flex>
+      </FadeInBottom>
 
       {/* PRIZES */}
-      <Flex
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        margin={"50px 0px 0px 0px"}
-        gap={"20px"}
-        id="prizesSection"
-      >
-        <Text
-          fontSize={"4xl"}
-          fontWeight={"600"}
-          color={"brand.primary"}
-          textAlign={"center"}
-          margin={"0"}
-          textTransform={"uppercase"}
-          letterSpacing={"3px"}
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={"50px 0px 0px 0px"}
+          gap={"20px"}
+          id="prizesSection"
+          w="100%"
         >
-          Prizes
-        </Text>
-        <Text>coming soon...</Text>
-      </Flex>
+          <Text
+            fontSize={"4xl"}
+            fontWeight={"600"}
+            color={"brand.primary"}
+            textAlign={"center"}
+            margin={"0"}
+            textTransform={"uppercase"}
+            letterSpacing={"3px"}
+          >
+            Prizes
+          </Text>
+          <Text>coming soon...</Text>
+        </Flex>
+      </FadeInBottom>
 
       {/* SPONSORS */}
-      <Flex
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        margin={"50px 0px 0px 0px"}
-        gap={"20px"}
-        id="sponsorsSection"
-      >
-        <Text
-          fontSize={"4xl"}
-          fontWeight={"600"}
-          color={"brand.primary"}
-          textAlign={"center"}
-          margin={"0"}
-          textTransform={"uppercase"}
-          letterSpacing={"3px"}
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={"50px 0px 0px 0px"}
+          gap={"20px"}
+          id="sponsorsSection"
+          w="100%"
         >
-          Sponsors
-        </Text>
-        <Text>coming soon...</Text>
-      </Flex>
+          <Text
+            fontSize={"4xl"}
+            fontWeight={"600"}
+            color={"brand.primary"}
+            textAlign={"center"}
+            margin={"0"}
+            textTransform={"uppercase"}
+            letterSpacing={"3px"}
+          >
+            Sponsors
+          </Text>
+          <Text>coming soon...</Text>
+        </Flex>
+      </FadeInBottom>
 
       {/* CONTACT US */}
-      <Flex
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        margin={"50px 0px 0px 0px"}
-        gap={"20px"}
-        id="contactUsSection"
-      >
-        <Text
-          fontSize={"4xl"}
-          fontWeight={"600"}
-          color={"brand.primary"}
-          textAlign={"center"}
-          margin={"0"}
-          textTransform={"uppercase"}
-          letterSpacing={"3px"}
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={"50px 0px 0px 0px"}
+          gap={"20px"}
+          id="contactUsSection"
+          w="100%"
         >
-          Contact us
-        </Text>
-        <Container maxW="1000px" py={4}>
-          <Flex
-            direction={{ base: "column", md: "row" }}
-            gap={8}
-            align="center"
+          <Text
+            fontSize={"4xl"}
+            fontWeight={"600"}
+            color={"brand.primary"}
+            textAlign={"center"}
+            margin={"0"}
+            textTransform={"uppercase"}
+            letterSpacing={"3px"}
           >
-            <Box flex={1}>
-              <Image
-                src={ContactUsIllustration}
-                alt="Contact illustration"
-                maxW={{ base: "300px", lg: "350px", xl: "400px" }}
-                mx="auto"
-              />
-            </Box>
+            Contact us
+          </Text>
+          <Container maxW="1000px" py={4}>
+            <Flex
+              direction={{ base: "column", md: "row" }}
+              gap={8}
+              align="center"
+            >
+              <Box flex={1}>
+                <Image
+                  src={ContactUsIllustration}
+                  alt="Contact illustration"
+                  maxW={{ base: "300px", lg: "350px", xl: "400px" }}
+                  mx="auto"
+                />
+              </Box>
 
-            <Box flex={2} width={{ base: "90%", md: "auto" }}>
-              <form onSubmit={handleSubmit}>
-                <Grid
-                  templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-                  gap={6}
-                  mb={6}
-                >
-                  <FormControl>
+              <Box flex={2} width={{ base: "90%", md: "auto" }}>
+                <form onSubmit={handleSubmit}>
+                  <Grid
+                    templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+                    gap={6}
+                    mb={6}
+                  >
+                    <FormControl>
+                      <Input
+                        placeholder="FIRST NAME"
+                        bg="brand.tertiary"
+                        size="lg"
+                        borderRadius="md"
+                        borderColor="brand.tertiary"
+                        name="firstName"
+                        value={formData.firstName}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <Input
+                        placeholder="LAST NAME"
+                        bg="brand.tertiary"
+                        size="lg"
+                        borderRadius="md"
+                        borderColor="brand.tertiary"
+                        name="lastName"
+                        value={formData.lastName}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+                  </Grid>
+
+                  <FormControl mb={6}>
                     <Input
-                      placeholder="FIRST NAME"
+                      placeholder="SCHOOL"
                       bg="brand.tertiary"
                       size="lg"
                       borderRadius="md"
                       borderColor="brand.tertiary"
-                      name="firstName"
-                      value={formData.firstName}
+                      name="school"
+                      value={formData.school}
                       onChange={handleChange}
                     />
                   </FormControl>
 
-                  <FormControl>
-                    <Input
-                      placeholder="LAST NAME"
+                  <Grid
+                    templateColumns={{ base: "1fr", md: "1fr 1fr" }}
+                    gap={6}
+                    mb={6}
+                  >
+                    <FormControl>
+                      <Input
+                        placeholder="PHONE NUMBER"
+                        bg="brand.tertiary"
+                        size="lg"
+                        borderRadius="md"
+                        borderColor="brand.tertiary"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+
+                    <FormControl>
+                      <Input
+                        placeholder="EMAIL"
+                        type="email"
+                        bg="brand.tertiary"
+                        size="lg"
+                        borderRadius="md"
+                        borderColor="brand.tertiary"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
+                    </FormControl>
+                  </Grid>
+
+                  <FormControl mb={6}>
+                    <Textarea
+                      placeholder="MESSAGE"
                       bg="brand.tertiary"
                       size="lg"
                       borderRadius="md"
+                      rows={6}
                       borderColor="brand.tertiary"
-                      name="lastName"
-                      value={formData.lastName}
+                      minHeight={"150px"}
+                      name="message"
+                      value={formData.message}
                       onChange={handleChange}
                     />
                   </FormControl>
-                </Grid>
 
-                <FormControl mb={6}>
-                  <Input
-                    placeholder="SCHOOL"
-                    bg="brand.tertiary"
+                  <Button
+                    variant={"custom"}
+                    type="submit"
+                    w="100%"
+                    bg="brand.primary"
+                    color="white"
                     size="lg"
-                    borderRadius="md"
-                    borderColor="brand.tertiary"
-                    name="school"
-                    value={formData.school}
-                    onChange={handleChange}
-                  />
-                </FormControl>
-
-                <Grid
-                  templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-                  gap={6}
-                  mb={6}
-                >
-                  <FormControl>
-                    <Input
-                      placeholder="PHONE NUMBER"
-                      bg="brand.tertiary"
-                      size="lg"
-                      borderRadius="md"
-                      borderColor="brand.tertiary"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleChange}
-                    />
-                  </FormControl>
-
-                  <FormControl>
-                    <Input
-                      placeholder="EMAIL"
-                      type="email"
-                      bg="brand.tertiary"
-                      size="lg"
-                      borderRadius="md"
-                      borderColor="brand.tertiary"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                    />
-                  </FormControl>
-                </Grid>
-
-                <FormControl mb={6}>
-                  <Textarea
-                    placeholder="MESSAGE"
-                    bg="brand.tertiary"
-                    size="lg"
-                    borderRadius="md"
-                    rows={6}
-                    borderColor="brand.tertiary"
-                    minHeight={"150px"}
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                  />
-                </FormControl>
-
-                <Button
-                  variant={"custom"}
-                  type="submit"
-                  w="100%"
-                  bg="brand.primary"
-                  color="white"
-                  size="lg"
-                  _hover={{ bg: "red.700" }}
-                >
-                  SUBMIT
-                </Button>
-              </form>
-            </Box>
-          </Flex>
-        </Container>
-      </Flex>
+                    _hover={{ bg: "red.700" }}
+                  >
+                    SUBMIT
+                  </Button>
+                </form>
+              </Box>
+            </Flex>
+          </Container>
+        </Flex>
+      </FadeInBottom>
 
       {/* FAQ */}
-      <Flex
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        margin={"50px 0px 0px 0px"}
-        gap={"20px"}
-        id="faqsSection"
-      >
-        <Text
-          fontSize={"4xl"}
-          fontWeight={"600"}
-          color={"brand.primary"}
-          textAlign={"center"}
-          margin={"0"}
-          textTransform={"uppercase"}
-          letterSpacing={"3px"}
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={"50px 0px 0px 0px"}
+          gap={"20px"}
+          id="faqsSection"
+          w="100%"
         >
-          FAQs
-        </Text>
-        <Container maxW="1000px" px={{ base: 8, md: 0 }}>
-          <Accordion allowToggle>
-            {faqData.map((faq, index) => (
-              <AccordionItem key={index} border="none">
-                {({ isExpanded }) => (
-                  <>
-                    <AccordionButton
-                      p={4}
-                      _hover={{ bg: "transparent" }}
-                      _expanded={{ bg: "transparent" }}
-                    >
-                      <Box flex="1" textAlign="left">
-                        <Text fontSize="2xl" fontWeight="medium">
-                          {faq.question}
-                        </Text>
-                      </Box>
-                      <Icon
-                        as={isExpanded ? MinusIcon : AddIcon}
-                        fontSize="20px"
-                      />
-                    </AccordionButton>
-                    <AccordionPanel pb={4}>
-                      <Text fontSize="xl">{faq.answer}</Text>
-                    </AccordionPanel>
-                  </>
-                )}
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </Container>
-      </Flex>
+          <Text
+            fontSize={"4xl"}
+            fontWeight={"600"}
+            color={"brand.primary"}
+            textAlign={"center"}
+            margin={"0"}
+            textTransform={"uppercase"}
+            letterSpacing={"3px"}
+          >
+            FAQs
+          </Text>
+          <Container maxW="1000px" px={{ base: 8, md: 0 }}>
+            <Accordion allowToggle>
+              {faqData.map((faq, index) => (
+                <AccordionItem key={index} border="none">
+                  {({ isExpanded }) => (
+                    <>
+                      <AccordionButton
+                        p={4}
+                        _hover={{ bg: "transparent" }}
+                        _expanded={{ bg: "transparent" }}
+                      >
+                        <Box flex="1" textAlign="left">
+                          <Text fontSize="2xl" fontWeight="medium">
+                            {faq.question}
+                          </Text>
+                        </Box>
+                        <Icon
+                          as={isExpanded ? MinusIcon : AddIcon}
+                          fontSize="20px"
+                        />
+                      </AccordionButton>
+                      <AccordionPanel pb={4}>
+                        <Text fontSize="xl">{faq.answer}</Text>
+                      </AccordionPanel>
+                    </>
+                  )}
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </Container>
+        </Flex>
+      </FadeInBottom>
 
       {/* REGISTER */}
-      <Flex
-        flexDirection={"column"}
-        justifyContent={"center"}
-        alignItems={"center"}
-        margin={"50px 0px"}
-        gap={"20px"}
-      >
-        <Container maxW="1000px" px={{ base: 10, md: 4 }}>
-          <Flex
-            direction={{ base: "column-reverse", md: "row" }}
-            align="center"
-            justify="space-between"
-            gap={8}
-          >
-            <Box maxW="550px">
-              <Text fontSize="2xl" mb={4}>
-                Don't miss out on Illinois Tech's biggest hackathon, unleash
-                your creativity and make an impact!
-              </Text>
-              <Text fontSize="2xl" mb={6}>
-                Register now if you haven't already!
-              </Text>
-              <Button
-                variant={"custom"}
-                size="lg"
-                bg="brand.primary"
-                color="white"
-                _hover={{ bg: "red.700" }}
-                w="100%"
-                letterSpacing={"1px"}
-                textTransform="uppercase"
-                onClick={() => {
-                  navigate("/register");
-                }}
-              >
-                Register
-              </Button>
-            </Box>
-            <Image
-              src={RegisterIllustration}
-              alt="People walking"
-              maxW={{ base: "300px", md: "350px" }}
-            />
-          </Flex>
-        </Container>
-      </Flex>
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={"50px 0px"}
+          gap={"20px"}
+          w="100%"
+        >
+          <Container maxW="1000px" px={{ base: 10, md: 4 }}>
+            <Flex
+              direction={{ base: "column-reverse", md: "row" }}
+              align="center"
+              justify="space-between"
+              gap={8}
+            >
+              <Box maxW="550px">
+                <Text fontSize="2xl" mb={4}>
+                  Don't miss out on Illinois Tech's biggest hackathon, unleash
+                  your creativity and make an impact!
+                </Text>
+                <Text fontSize="2xl" mb={6}>
+                  Register now if you haven't already!
+                </Text>
+                <Button
+                  variant={"custom"}
+                  size="lg"
+                  bg="brand.primary"
+                  color="white"
+                  _hover={{ bg: "red.700" }}
+                  w="100%"
+                  letterSpacing={"1px"}
+                  textTransform="uppercase"
+                  onClick={() => {
+                    navigate("/register");
+                  }}
+                >
+                  Register
+                </Button>
+              </Box>
+              <Image
+                src={RegisterIllustration}
+                alt="People walking"
+                maxW={{ base: "300px", md: "350px" }}
+              />
+            </Flex>
+          </Container>
+        </Flex>
+      </FadeInBottom>
     </Flex>
   );
 };
