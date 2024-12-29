@@ -21,6 +21,7 @@ import {
 import MinimalistLogo from "../../assets/ScarletHacks2025MinimalistLogo.png";
 import BGLogo from "../../assets/MinimalistLogoBG.png";
 import ContactUsIllustration from "../../assets/contact-us-illustration.png";
+import ContactUsIllustration2 from "../../assets/contact-us-illustration-2.png";
 import RegisterIllustration from "../../assets/Register.png";
 import track1 from "../../assets/track1.png";
 import track2 from "../../assets/track2.png";
@@ -667,7 +668,7 @@ export const MainPage = () => {
             >
               <Box flex={1}>
                 <Image
-                  src={ContactUsIllustration}
+                  src={ContactUsIllustration2}
                   alt="Contact illustration"
                   maxW={{ base: "300px", lg: "350px", xl: "400px" }}
                   mx="auto"
