@@ -8,7 +8,7 @@ const theme = extendTheme({
       secondary: "#F2E8CF",
       tertiary: "#D9D9D9",
       background: "#F9F8F4",
-      text: "#000000",
+      text: "#212427",
     },
   },
   components: {

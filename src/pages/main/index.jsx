@@ -16,7 +16,7 @@ import {
   AccordionButton,
   AccordionPanel,
   Icon,
-  calc,
+  FormErrorMessage,
 } from "@chakra-ui/react";
 import MinimalistLogo from "../../assets/ScarletHacks2025MinimalistLogo.png";
 import BGLogo from "../../assets/MinimalistLogoBG.png";
@@ -26,13 +26,15 @@ import RegisterIllustration from "../../assets/Register.png";
 import track1 from "../../assets/track1.png";
 import track2 from "../../assets/track2.png";
 import { useNavigate } from "react-router-dom";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
 import {
   FadeInLeft,
   FadeInBottom,
   FadeInRight,
 } from "../../components/Animations";
+import { useToast } from "@chakra-ui/react";
+import emailjs from "@emailjs/browser";
 
 const ScheduleItem = ({ time, event }) => (
   <Grid templateColumns="1fr auto" gap={24} w="100%">
@@ -59,6 +61,8 @@ const DaySchedule = ({ day, date, events }) => (
 
 export const MainPage = () => {
   const navigate = useNavigate();
+  const toast = useToast();
+
   const [timeLeft, setTimeLeft] = useState({
     days: "--",
     hours: "--",
@@ -175,16 +179,81 @@ export const MainPage = () => {
     console.log("Form submitted:", formData);
     // Add your form submission logic here
 
-    // Optional: Clear form after submission
-    setFormData({
-      firstName: "",
-      lastName: "",
-      school: "",
-      phone: "",
-      email: "",
-      message: "",
-    });
+    const templateParams = {
+      user_first_name: formData.firstName,
+      user_last_name: formData.lastName,
+      user_email: formData.email,
+      user_school: formData.school,
+      user_phone: formData.phone,
+      user_message: formData.message,
+    };
+
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    console.log("Service ID:", serviceId);
+    console.log("Template ID:", templateId);
+    console.log("Public Key:", publicKey);
+
+    emailjs
+      .send(serviceId, templateId, templateParams, {
+        publicKey: publicKey,
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+          // Success toast
+          toast({
+            title: "Message sent successfully!",
+            description: "We'll get back to you soon.",
+            status: "success",
+            duration: 2000,
+            isClosable: true,
+            position: "top",
+          });
+          setFormData({
+            firstName: "",
+            lastName: "",
+            school: "",
+            phone: "",
+            email: "",
+            message: "",
+          });
+        },
+        (error) => {
+          console.log("FAILED...", error);
+          // Error toast
+          toast({
+            title: "Failed to send message",
+            description: "Please try again later.",
+            status: "error",
+            duration: 2000,
+            isClosable: true,
+            position: "top",
+          });
+        }
+      );
   };
+
+  const [errors, setErrors] = useState({});
+
+  const isFormValid = useMemo(() => {
+    return (
+      formData.firstName.trim() !== "" &&
+      formData.lastName.trim() !== "" &&
+      formData.school.trim() !== "" &&
+      formData.message.trim() !== "" &&
+      formData.email.trim() !== "" &&
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    );
+  }, [
+    formData.firstName,
+    formData.lastName,
+    formData.school,
+    formData.email,
+    formData.message,
+  ]);
 
   return (
     <Flex w="100%" flexDirection={"column"} position={"relative"}>
@@ -682,9 +751,9 @@ export const MainPage = () => {
                     gap={6}
                     mb={6}
                   >
-                    <FormControl>
+                    <FormControl isRequired isInvalid={errors.firstName}>
                       <Input
-                        placeholder="FIRST NAME"
+                        placeholder="FIRST NAME*"
                         bg="brand.tertiary"
                         size="lg"
                         borderRadius="md"
@@ -693,11 +762,14 @@ export const MainPage = () => {
                         value={formData.firstName}
                         onChange={handleChange}
                       />
+                      <FormErrorMessage>
+                        First name is required
+                      </FormErrorMessage>
                     </FormControl>
 
-                    <FormControl>
+                    <FormControl isRequired isInvalid={errors.lastName}>
                       <Input
-                        placeholder="LAST NAME"
+                        placeholder="LAST NAME*"
                         bg="brand.tertiary"
                         size="lg"
                         borderRadius="md"
@@ -706,12 +778,13 @@ export const MainPage = () => {
                         value={formData.lastName}
                         onChange={handleChange}
                       />
+                      <FormErrorMessage>Last name is required</FormErrorMessage>
                     </FormControl>
                   </Grid>
 
-                  <FormControl mb={6}>
+                  <FormControl isRequired isInvalid={errors.school} mb={6}>
                     <Input
-                      placeholder="SCHOOL"
+                      placeholder="SCHOOL*"
                       bg="brand.tertiary"
                       size="lg"
                       borderRadius="md"
@@ -720,6 +793,7 @@ export const MainPage = () => {
                       value={formData.school}
                       onChange={handleChange}
                     />
+                    <FormErrorMessage>School is required</FormErrorMessage>
                   </FormControl>
 
                   <Grid
@@ -740,9 +814,9 @@ export const MainPage = () => {
                       />
                     </FormControl>
 
-                    <FormControl>
+                    <FormControl isRequired isInvalid={errors.email}>
                       <Input
-                        placeholder="EMAIL"
+                        placeholder="EMAIL*"
                         type="email"
                         bg="brand.tertiary"
                         size="lg"
@@ -752,12 +826,15 @@ export const MainPage = () => {
                         value={formData.email}
                         onChange={handleChange}
                       />
+                      <FormErrorMessage>
+                        Valid email is required
+                      </FormErrorMessage>
                     </FormControl>
                   </Grid>
 
-                  <FormControl mb={6}>
+                  <FormControl isRequired isInvalid={errors.message} mb={6}>
                     <Textarea
-                      placeholder="MESSAGE"
+                      placeholder="MESSAGE*"
                       bg="brand.tertiary"
                       size="lg"
                       borderRadius="md"
@@ -768,6 +845,7 @@ export const MainPage = () => {
                       value={formData.message}
                       onChange={handleChange}
                     />
+                    <FormErrorMessage>Message is required</FormErrorMessage>
                   </FormControl>
 
                   <Button
@@ -778,6 +856,7 @@ export const MainPage = () => {
                     color="white"
                     size="lg"
                     _hover={{ bg: "red.700" }}
+                    isDisabled={!isFormValid}
                   >
                     SUBMIT
                   </Button>
