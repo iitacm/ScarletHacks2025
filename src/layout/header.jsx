@@ -105,9 +105,6 @@ const Header = ({ sectionRefs }) => {
               variant="custom"
               letterSpacing={"1px"}
               textTransform="uppercase"
-              onClick={() => {
-                navigate("/register");
-              }}
               size={"lg"}
               _hover={{ bg: "red.700" }}
             >

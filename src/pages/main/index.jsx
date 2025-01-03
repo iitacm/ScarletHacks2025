@@ -316,9 +316,6 @@ export const MainPage = () => {
               variant={"custom"}
               letterSpacing={"1px"}
               textTransform="uppercase"
-              onClick={() => {
-                navigate("/register");
-              }}
               size="lg"
               width={"200px"}
               fontSize={"xl"}
@@ -956,9 +953,6 @@ export const MainPage = () => {
                   w="100%"
                   letterSpacing={"1px"}
                   textTransform="uppercase"
-                  onClick={() => {
-                    navigate("/register");
-                  }}
                 >
                   Register
                 </Button>

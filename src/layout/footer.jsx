@@ -90,9 +90,6 @@ const Footer = () => {
                 color="black"
                 _hover={{ color: "brand.primary" }}
                 fontSize={"xl"}
-                onClick={() => {
-                  navigate("/register");
-                }}
               >
                 Register Now
               </Link>
