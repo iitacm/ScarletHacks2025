@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://iitacm.github.io/ScarletHacks2025/",
+  "homepage": "https://scarlethacks.com/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
