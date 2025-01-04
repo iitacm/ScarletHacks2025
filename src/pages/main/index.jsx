@@ -37,9 +37,17 @@ import { useToast } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 
 const ScheduleItem = ({ time, event }) => (
-  <Grid templateColumns="1fr auto" gap={24} w="100%">
-    <Text fontSize="2xl">{event}</Text>
-    <Text fontSize="2xl">{time}</Text>
+  <Grid
+    templateColumns="1fr auto"
+    gap={{ base: "12", md: "20", lg: "24" }}
+    w="100%"
+  >
+    <Text lineHeight="26px" fontSize="2xl">
+      {event}
+    </Text>
+    <Text lineHeight="26px" fontSize="2xl">
+      {time}
+    </Text>
   </Grid>
 );
 
@@ -51,7 +59,7 @@ const DaySchedule = ({ day, date, events }) => (
     <Text fontSize="2xl" mb={2} fontWeight={"600"}>
       {date}
     </Text>
-    <VStack align="stretch" spacing={2}>
+    <VStack align="stretch" spacing={4}>
       {events.map((event, index) => (
         <ScheduleItem key={index} {...event} />
       ))}
@@ -641,7 +649,7 @@ export const MainPage = () => {
 
           <Grid
             templateColumns={{ base: "1fr", md: "1fr 1fr" }}
-            gap={24}
+            gap={{ base: "12", md: "16", lg: "24" }}
             maxWidth={"1000px"}
             w="100%"
             px={{ base: 8, md: 0 }}
