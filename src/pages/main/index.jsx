@@ -17,6 +17,7 @@ import {
   AccordionPanel,
   Icon,
   FormErrorMessage,
+  Link,
 } from "@chakra-ui/react";
 import MinimalistLogo from "../../assets/ScarletHacks2025MinimalistLogo.png";
 import BGLogo from "../../assets/MinimalistLogoBG.png";
@@ -735,7 +736,7 @@ export const MainPage = () => {
             Contact us
           </Text>
           <Container maxW="1000px" py={4}>
-            <Flex
+            {/* <Flex
               direction={{ base: "column", md: "row" }}
               gap={8}
               align="center"
@@ -867,7 +868,23 @@ export const MainPage = () => {
                   </Button>
                 </form>
               </Box>
-            </Flex>
+            </Flex> */}
+            <Box textAlign={"center"}>
+              <Text as="span" fontSize="2xl" textAlign="center" margin={"auto"}>
+                Got questions? We've got answers! <br />
+                Reach out to us at{" "}
+              </Text>
+              <Link href="mailto:acm@iit.edu">
+                <Text
+                  as="span"
+                  color={"brand.primary"}
+                  fontSize="2xl"
+                  textDecoration={"underline"}
+                >
+                  acm@iit.edu
+                </Text>
+              </Link>
+            </Box>
           </Container>
         </Flex>
       </FadeInBottom>
