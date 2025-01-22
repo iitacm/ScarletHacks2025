@@ -709,7 +709,22 @@ export const MainPage = () => {
           >
             Sponsors
           </Text>
-          <Text>coming soon...</Text>
+          <Box textAlign={"center"}>
+            <Text as="span" fontSize="2xl" textAlign="center" margin={"auto"}>
+              Interested in being a sponsor? <br />
+              Email us on{" "}
+            </Text>
+            <Link href="mailto:acm@iit.edu">
+              <Text
+                as="span"
+                color={"brand.primary"}
+                fontSize="2xl"
+                textDecoration={"underline"}
+              >
+                sponsor@scarlethacks.com
+              </Text>
+            </Link>
+          </Box>
         </Flex>
       </FadeInBottom>
 
@@ -881,7 +896,7 @@ export const MainPage = () => {
                   fontSize="2xl"
                   textDecoration={"underline"}
                 >
-                  acm@iit.edu
+                  contact@scarlethacks.com
                 </Text>
               </Link>
             </Box>
