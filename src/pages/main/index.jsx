@@ -264,6 +264,14 @@ export const MainPage = () => {
     formData.message,
   ]);
 
+  const handleSponsorEmail = () => {
+    window.location.href = "mailto:sponsor@scarlethacks.com";
+  };
+
+  const handleContactEmail = () => {
+    window.location.href = "mailto:contact@scarlethacks.com";
+  };
+
   return (
     <Flex w="100%" flexDirection={"column"} position={"relative"}>
       {/* INFO & LOGO */}
@@ -725,6 +733,17 @@ export const MainPage = () => {
               </Text>
             </Link>
           </Box>
+          <Button
+            variant="custom"
+            letterSpacing={"1px"}
+            textTransform="uppercase"
+            size={"lg"}
+            _hover={{ bg: "red.700" }}
+            onClick={handleSponsorEmail}
+            boxShadow="sm"
+          >
+            Become a Sponsor
+          </Button>
         </Flex>
       </FadeInBottom>
 
@@ -750,7 +769,7 @@ export const MainPage = () => {
           >
             Contact us
           </Text>
-          <Container maxW="1000px" py={4}>
+          <Container maxW="1000px" py={0} textAlign={"center"}>
             {/* <Flex
               direction={{ base: "column", md: "row" }}
               gap={8}
@@ -900,6 +919,18 @@ export const MainPage = () => {
                 </Text>
               </Link>
             </Box>
+            <Button
+              variant="custom"
+              letterSpacing={"1px"}
+              textTransform="uppercase"
+              size={"lg"}
+              _hover={{ bg: "red.700" }}
+              onClick={handleContactEmail}
+              mt="20px"
+              boxShadow="sm"
+            >
+              Contact Us
+            </Button>
           </Container>
         </Flex>
       </FadeInBottom>
