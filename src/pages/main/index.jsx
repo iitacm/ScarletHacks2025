@@ -329,17 +329,19 @@ export const MainPage = () => {
             <Text fontSize={"3xl"} color={"brand.primary"} fontWeight={"700"}>
               April 5-6, 2025
             </Text>
-            <Button
-              variant={"custom"}
-              letterSpacing={"1px"}
-              textTransform="uppercase"
-              size="lg"
-              width={"200px"}
-              fontSize={"xl"}
-              _hover={{ bg: "red.700" }}
-            >
-              Register
-            </Button>
+            <Link href="https://forms.office.com/r/SngGaAkhZR" target="_blank">
+              <Button
+                variant={"custom"}
+                letterSpacing={"1px"}
+                textTransform="uppercase"
+                size="lg"
+                width={"200px"}
+                fontSize={"xl"}
+                _hover={{ bg: "red.700" }}
+              >
+                Register
+              </Button>
+            </Link>
           </VStack>
 
           <Flex
@@ -1015,18 +1017,23 @@ export const MainPage = () => {
                 <Text fontSize="2xl" mb={6}>
                   Register now if you haven't already!
                 </Text>
-                <Button
-                  variant={"custom"}
-                  size="lg"
-                  bg="brand.primary"
-                  color="white"
-                  _hover={{ bg: "red.700" }}
-                  w="100%"
-                  letterSpacing={"1px"}
-                  textTransform="uppercase"
+                <Link
+                  href="https://forms.office.com/r/SngGaAkhZR"
+                  target="_blank"
                 >
-                  Register
-                </Button>
+                  <Button
+                    variant={"custom"}
+                    size="lg"
+                    bg="brand.primary"
+                    color="white"
+                    _hover={{ bg: "red.700" }}
+                    w="100%"
+                    letterSpacing={"1px"}
+                    textTransform="uppercase"
+                  >
+                    Register
+                  </Button>
+                </Link>
               </Box>
               <Image
                 src={RegisterIllustration}

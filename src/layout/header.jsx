@@ -101,15 +101,17 @@ const Header = ({ sectionRefs }) => {
             >
               FAQs
             </Link>
-            <Button
-              variant="custom"
-              letterSpacing={"1px"}
-              textTransform="uppercase"
-              size={"lg"}
-              _hover={{ bg: "red.700" }}
-            >
-              Register
-            </Button>
+            <Link href="https://forms.office.com/r/SngGaAkhZR" target="_blank">
+              <Button
+                variant="custom"
+                letterSpacing={"1px"}
+                textTransform="uppercase"
+                size={"lg"}
+                _hover={{ bg: "red.700" }}
+              >
+                Register
+              </Button>
+            </Link>
           </HStack>
         </Flex>
         {/* Navigation Links */}
