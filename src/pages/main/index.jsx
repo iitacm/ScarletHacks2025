@@ -164,6 +164,10 @@ export const MainPage = () => {
       answer:
         "This event is open to anyone of all skill levels - and it's all free!",
     },
+    {
+      question: "How many people can be on a team?",
+      answer: "Between 1 and 4 people can be on a single team.",
+    },
   ];
 
   const [formData, setFormData] = useState({

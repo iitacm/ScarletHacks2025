@@ -22,7 +22,6 @@ const Footer = () => {
     { name: "Instagram", href: "https://www.instagram.com/acm_iit/" },
     { name: "LinkedIn", href: "https://www.linkedin.com/in/acm-iit/" },
     { name: "Discord", href: "https://discord.com/invite/SJS8468yHc" },
-    { name: "X", href: "https://x.com/acm_iit" },
   ];
 
   const handleScroll = (id) => {
