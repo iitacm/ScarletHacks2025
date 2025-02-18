@@ -123,9 +123,11 @@ const Footer = () => {
               &#x2665;&#xfe0f;
             </Box>
             <Text>by the</Text>
-            <Text color="brand.primary" fontWeight="bold">
-              ScarletHacks
-            </Text>
+            <Link href="https://acmillinoistech.org/team" target="_blank">
+              <Text color="brand.primary" fontWeight="bold">
+                ScarletHacks
+              </Text>
+            </Link>
             <Text>team</Text>
           </HStack>
         </Container>
