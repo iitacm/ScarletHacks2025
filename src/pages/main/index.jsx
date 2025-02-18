@@ -168,6 +168,10 @@ export const MainPage = () => {
       question: "How many people can be on a team?",
       answer: "Between 1 and 4 people can be on a single team.",
     },
+    {
+      question: "Where is the event held?",
+      answer: "The event is held in the Stuart Building at Illinois Tech campus.",
+    },
   ];
 
   const [formData, setFormData] = useState({
