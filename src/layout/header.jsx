@@ -11,7 +11,6 @@ import {
   Image,
   Drawer,
   DrawerBody,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -48,6 +47,7 @@ const Header = ({ sectionRefs }) => {
   return (
     <FadeInTop>
       <Flex
+        as={"header"}
         bg="brand.background"
         w={"100%"}
         padding={{ base: "20px 20px", md: "20px 50px", lg: "20px 120px" }}
