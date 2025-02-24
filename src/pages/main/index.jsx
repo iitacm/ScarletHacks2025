@@ -133,7 +133,7 @@ export const MainPage = () => {
       events: [
         { event: "Breakfast", time: "8:00 AM" },
         { event: "Hacking Ends", time: "10:00 AM" },
-        { event: "Judging", time: "10:00 PM" },
+        { event: "Judging", time: "10:00 AM" },
         { event: "Lunch", time: "12:00 PM" },
         { event: "Closing ceremony & awards", time: "1:00 PM" },
       ],
@@ -170,7 +170,8 @@ export const MainPage = () => {
     },
     {
       question: "Where is the event held?",
-      answer: "The event is held in the Stuart Building at Illinois Tech campus.",
+      answer:
+        "The event is held in the Stuart Building at Illinois Tech campus.",
     },
   ];
 
