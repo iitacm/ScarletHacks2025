@@ -5,27 +5,21 @@ import {
   Button,
   Box,
   VStack,
-  Heading,
   Grid,
-  FormControl,
   Container,
-  Input,
-  Textarea,
   Accordion,
   AccordionItem,
   AccordionButton,
   AccordionPanel,
   Icon,
-  FormErrorMessage,
   Link,
 } from "@chakra-ui/react";
 import MinimalistLogo from "../../assets/ScarletHacks2025MinimalistLogo.png";
 import BGLogo from "../../assets/MinimalistLogoBG.png";
-import ContactUsIllustration from "../../assets/contact-us-illustration.png";
-import ContactUsIllustration2 from "../../assets/contact-us-illustration-2.png";
 import RegisterIllustration from "../../assets/Register.png";
 import track1 from "../../assets/track1.png";
 import track2 from "../../assets/track2.png";
+import bubblr from "../../assets/bubblr.png";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useMemo } from "react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
@@ -728,6 +722,17 @@ export const MainPage = () => {
           >
             Sponsors
           </Text>
+          <Flex wrap="wrap" justifyContent="center" gap={8}>
+            <Link href="https://www.drinkbubblr.com/" isExternal>
+              <Image
+                src={bubblr}
+                alt="bubblr-sponsor"
+                maxW={{ base: "200px", md: "300px" }}
+                transition="transform 0.3s ease-in-out"
+                _hover={{ transform: "scale(1.1)" }}
+              />
+            </Link>
+          </Flex>
           <Box textAlign={"center"}>
             <Text as="span" fontSize="2xl" textAlign="center" margin={"auto"}>
               Interested in being a sponsor? <br />
