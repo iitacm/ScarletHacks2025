@@ -742,7 +742,7 @@ export const MainPage = () => {
                   alt={sponsor.alt}
                   maxW={{ base: "200px", md: "300px" }}
                   transition="transform 0.3s ease-in-out"
-                  _hover={{ transform: "scale(1.1)" }}
+                  _hover={{ transform: "scale(1.04)" }}
                 />
               </Link>
             ))}
