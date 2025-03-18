@@ -20,6 +20,7 @@ import RegisterIllustration from "../../assets/Register.png";
 import track1 from "../../assets/track1.png";
 import track2 from "../../assets/track2.png";
 import bubblr from "../../assets/bubblr.png";
+import desmos from "../../assets/desmos.webp";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useMemo } from "react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
@@ -275,6 +276,19 @@ export const MainPage = () => {
     window.location.href = "mailto:contact@scarlethacks.com";
   };
 
+  const sponsorsData = [
+    {
+      image: bubblr,
+      alt: "Bubblr",
+      link: "https://www.bubblr.io/",
+    },
+    {
+      image: desmos,
+      alt: "Desmos",
+      link: "https://www.desmos.com/",
+    },
+  ];
+
   return (
     <Flex w="100%" flexDirection={"column"} position={"relative"}>
       {/* INFO & LOGO */}
@@ -364,7 +378,6 @@ export const MainPage = () => {
           </Flex>
         </Flex>
       </Flex>
-
       <Image
         src={BGLogo}
         alt="ScarletHacks2025MinimalistLogo"
@@ -375,7 +388,6 @@ export const MainPage = () => {
         opacity={0.5}
         maxW={{ base: "100px", md: "200px" }}
       />
-
       {/* COUNTDOWN CLOCK */}
       <FadeInBottom>
         <Flex
@@ -503,7 +515,6 @@ export const MainPage = () => {
           </Flex>
         </Flex>
       </FadeInBottom>
-
       <Image
         src={BGLogo}
         alt="ScarletHacks2025MinimalistLogo"
@@ -515,7 +526,6 @@ export const MainPage = () => {
         opacity={0.5}
         maxW={{ base: "100px", md: "200px" }}
       />
-
       {/* TRACKS */}
       <Flex
         flexDirection={"column"}
@@ -637,7 +647,6 @@ export const MainPage = () => {
           </Flex>
         </FadeInRight>
       </Flex>
-
       {/* SCHEDULE */}
       <FadeInBottom>
         <Flex
@@ -673,7 +682,6 @@ export const MainPage = () => {
           </Grid>
         </Flex>
       </FadeInBottom>
-
       {/* PRIZES */}
       <FadeInBottom>
         <Flex
@@ -699,8 +707,7 @@ export const MainPage = () => {
           <Text>coming soon...</Text>
         </Flex>
       </FadeInBottom>
-
-      {/* SPONSORS */}
+      {/* /* SPONSORS  */}
       <FadeInBottom>
         <Flex
           flexDirection={"column"}
@@ -722,16 +729,23 @@ export const MainPage = () => {
           >
             Sponsors
           </Text>
-          <Flex wrap="wrap" justifyContent="center" gap={8}>
-            <Link href="https://www.drinkbubblr.com/" isExternal>
-              <Image
-                src={bubblr}
-                alt="bubblr-sponsor"
-                maxW={{ base: "200px", md: "300px" }}
-                transition="transform 0.3s ease-in-out"
-                _hover={{ transform: "scale(1.1)" }}
-              />
-            </Link>
+          <Flex
+            wrap="wrap"
+            justifyContent="center"
+            gap={12}
+            alignItems={"center"}
+          >
+            {sponsorsData.map((sponsor, index) => (
+              <Link key={index} href={sponsor.link} isExternal>
+                <Image
+                  src={sponsor.image}
+                  alt={sponsor.alt}
+                  maxW={{ base: "200px", md: "300px" }}
+                  transition="transform 0.3s ease-in-out"
+                  _hover={{ transform: "scale(1.1)" }}
+                />
+              </Link>
+            ))}
           </Flex>
           <Box textAlign={"center"}>
             <Text as="span" fontSize="2xl" textAlign="center" margin={"auto"}>
@@ -762,7 +776,6 @@ export const MainPage = () => {
           </Button>
         </Flex>
       </FadeInBottom>
-
       {/* CONTACT US */}
       <FadeInBottom>
         <Flex
@@ -950,7 +963,6 @@ export const MainPage = () => {
           </Container>
         </Flex>
       </FadeInBottom>
-
       {/* FAQ */}
       <FadeInBottom>
         <Flex
@@ -1005,7 +1017,6 @@ export const MainPage = () => {
           </Container>
         </Flex>
       </FadeInBottom>
-
       {/* REGISTER */}
       <FadeInBottom>
         <Flex
