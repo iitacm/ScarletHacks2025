@@ -20,7 +20,7 @@ import RegisterIllustration from "../../assets/Register.png";
 import track1 from "../../assets/track1.png";
 import track2 from "../../assets/track2.png";
 import bubblr from "../../assets/bubblr.png";
-import desmos from "../../assets/desmos.webp";
+import desmos from "../../assets/DesmosLogo.png";
 import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState, useMemo } from "react";
 import { AddIcon, MinusIcon } from "@chakra-ui/icons";
@@ -280,7 +280,7 @@ export const MainPage = () => {
     {
       image: bubblr,
       alt: "Bubblr",
-      link: "https://www.bubblr.io/",
+      link: "https://www.drinkbubblr.com/",
     },
     {
       image: desmos,
