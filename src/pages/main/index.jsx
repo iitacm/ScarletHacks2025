@@ -31,6 +31,7 @@ import {
 } from "../../components/Animations";
 import { useToast } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
+import PrizesIllustration from "../../assets/prizes.png";
 
 const ScheduleItem = ({ time, event }) => (
   <Grid
@@ -704,7 +705,12 @@ export const MainPage = () => {
           >
             Prizes
           </Text>
-          <Text>coming soon...</Text>
+          <Image
+            src={PrizesIllustration}
+            alt="Prizes"
+            maxW={{ base: "400px", md: "500px", lg: "600px" }}
+            w="100%"
+          />
         </Flex>
       </FadeInBottom>
       {/* /* SPONSORS  */}
