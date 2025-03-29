@@ -32,6 +32,7 @@ import {
 import { useToast } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import PrizesIllustration from "../../assets/prizes.png";
+import MLLogo from "../../assets/ML-logo.png";
 
 const ScheduleItem = ({ time, event }) => (
   <Grid
@@ -282,6 +283,11 @@ export const MainPage = () => {
       image: bubblr,
       alt: "Bubblr",
       link: "https://www.drinkbubblr.com/",
+    },
+    {
+      image: MLLogo,
+      alt: "ML@IIT",
+      link: "https://www.linkedin.com/company/ml-at-iit/about/",
     },
     {
       image: desmos,
