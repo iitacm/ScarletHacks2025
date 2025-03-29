@@ -121,8 +121,8 @@ export const MainPage = () => {
         { event: "Opening Ceremony", time: "10:00 AM" },
         { event: "Hacking Starts", time: "11:00 AM" },
         { event: "Lunch", time: "12:30 PM" },
-        { event: "Pre-Judging", time: "3:00 PM" },
-        { event: "Dinner", time: "7:00 PM" },
+        { event: "Mentoring Session", time: "3:00 PM" },
+        { event: "Dinner", time: "6:00 PM" },
       ],
     },
     day2: {
