@@ -13,6 +13,7 @@ import {
   AccordionPanel,
   Icon,
   Link,
+  HStack,
 } from "@chakra-ui/react";
 import MinimalistLogo from "../../assets/ScarletHacks2025MinimalistLogo.png";
 import BGLogo from "../../assets/MinimalistLogoBG.png";
@@ -33,6 +34,8 @@ import { useToast } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
 import PrizesIllustration from "../../assets/prizes.png";
 import MLLogo from "../../assets/ML-logo.png";
+import { FaDiscord } from "react-icons/fa6";
+import PrizesSection from "../../components/Prizes";
 
 const ScheduleItem = ({ time, event }) => (
   <Grid
@@ -366,6 +369,25 @@ export const MainPage = () => {
                 Register
               </Button>
             </Link>
+            <HStack color={"brand.primary"} spacing={4}>
+              <Link
+                href="https://discord.gg/kETeAJuzbt"
+                target="_blank"
+                color={"brand.primary"}
+                fontSize={"2xl"}
+                textDecoration={"none"}
+                _hover={{
+                  textDecoration: "underline",
+                  color: "red.700",
+                  transform: "scale(1.02)",
+                }}
+                transition="all 0.3s ease"
+                ml="5px"
+              >
+                Join our Discord
+              </Link>
+              <FaDiscord fontSize={"28px"} />
+            </HStack>
           </VStack>
 
           <Flex
@@ -711,12 +733,7 @@ export const MainPage = () => {
           >
             Prizes
           </Text>
-          <Image
-            src={PrizesIllustration}
-            alt="Prizes"
-            maxW={{ base: "400px", md: "500px", lg: "600px" }}
-            w="100%"
-          />
+          <PrizesSection />
         </Flex>
       </FadeInBottom>
       {/* /* SPONSORS  */}
