@@ -88,15 +88,15 @@ const PrizesSection = () => {
     {
       rank: "Winner",
       amount: "1200",
-      prizeText: "Ultimate Raspberry Pi Computer*",
-      description: "+ Swag bag worth of $50 from Desmos",
+      prizeText: "Ultimate Raspberry Pi Computer* (x4)",
+      description: "+ Swag bag worth of $45 from Desmos",
       icon: <FaTrophy />,
       imageSrc: FirstPrize,
     },
     {
       rank: "Runner-up",
       amount: "400",
-      prizeText: "Mechanical Gaming Keyboard*",
+      prizeText: "Mechanical Gaming Keyboard* (x4)",
       description: "",
       icon: <FaMedal />,
       imageSrc: SecondPrize,
@@ -104,7 +104,7 @@ const PrizesSection = () => {
     {
       rank: "2nd Runner-up",
       amount: "200",
-      prizeText: "Wireless Gaming Mouse*",
+      prizeText: "Wireless Gaming Mouse* (x4)",
       description: "",
       icon: <FaAward />,
       imageSrc: ThirdPrize,
@@ -112,7 +112,7 @@ const PrizesSection = () => {
     {
       rank: "Best use of AI/ML",
       amount: "300",
-      prizeText: "Meta Quest MR Headset",
+      prizeText: "Meta Quest MR Headset* (x2)",
       description: "",
       icon: <FaStar />,
       imageSrc: MLPrize,
