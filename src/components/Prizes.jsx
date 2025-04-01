@@ -111,7 +111,7 @@ const PrizesSection = () => {
     },
     {
       rank: "Best use of AI/ML",
-      amount: "300",
+      amount: "600",
       prizeText: "Meta Quest MR Headset* (x2)",
       description: "",
       icon: <FaStar />,
