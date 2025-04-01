@@ -32,8 +32,8 @@ import {
 } from "../../components/Animations";
 import { useToast } from "@chakra-ui/react";
 import emailjs from "@emailjs/browser";
-import PrizesIllustration from "../../assets/prizes.png";
 import MLLogo from "../../assets/ML-logo.png";
+import ShpeLogo from "../../assets/shpe_logo.png";
 import { FaDiscord } from "react-icons/fa6";
 import PrizesSection from "../../components/Prizes";
 
@@ -296,6 +296,11 @@ export const MainPage = () => {
       image: desmos,
       alt: "Desmos",
       link: "https://www.desmos.com/",
+    },
+    {
+      image: ShpeLogo,
+      alt: "SHPE",
+      link: "https://www.instagram.com/shpe_iit/",
     },
   ];
 
