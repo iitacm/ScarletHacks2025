@@ -36,16 +36,37 @@ import MLLogo from "../../assets/ML-logo.png";
 import ShpeLogo from "../../assets/shpe_logo.png";
 import { FaDiscord } from "react-icons/fa6";
 import PrizesSection from "../../components/Prizes";
+import { Map } from "../../components/Map";
 
-const ScheduleItem = ({ time, event }) => (
+const ScheduleItem = ({ time, event, location }) => (
   <Grid
     templateColumns="1fr auto"
-    gap={{ base: "12", md: "20", lg: "24" }}
+    gap={{ base: "12", md: "20", lg: "20" }}
     w="100%"
   >
-    <Text lineHeight="26px" fontSize="2xl">
-      {event}
-    </Text>
+    <Flex>
+      <Text lineHeight="26px" fontSize="2xl">
+        {event}{" "}
+        <Box
+          as={"span"}
+          backgroundColor={"#6b9fff"}
+          borderRadius={"50%"}
+          padding={"3px"}
+          ml="5px"
+        >
+          <Text
+            as={"span"}
+            m={"0"}
+            fontSize={"18px"}
+            padding={"20px 5px"}
+            color={"white"}
+          >
+            {location}
+          </Text>
+        </Box>
+      </Text>
+    </Flex>
+
     <Text lineHeight="26px" fontSize="2xl">
       {time}
     </Text>
@@ -120,22 +141,22 @@ export const MainPage = () => {
     day1: {
       date: "Saturday, April 5, 2025",
       events: [
-        { event: "Registration and Breakfast", time: "8:00 AM" },
-        { event: "Opening Ceremony", time: "10:00 AM" },
-        { event: "Hacking Starts", time: "11:00 AM" },
-        { event: "Lunch", time: "12:30 PM" },
-        { event: "Mentoring Session", time: "3:00 PM" },
-        { event: "Dinner", time: "6:00 PM" },
+        { event: "Registration & Breakfast", time: "8:00 AM", location: "A" },
+        { event: "Opening Ceremony", time: "10:00 AM", location: "A" },
+        { event: "Hacking Starts", time: "11:00 AM", location: "C" },
+        { event: "Lunch", time: "12:30 PM", location: "B" },
+        { event: "Mentoring Session", time: "3:00 PM", location: "C" },
+        { event: "Dinner", time: "6:00 PM", location: "B" },
       ],
     },
     day2: {
       date: "Sunday, April 6, 2025",
       events: [
-        { event: "Breakfast", time: "8:00 AM" },
-        { event: "Hacking Ends", time: "11:00 AM" },
-        { event: "Judging", time: "11:00 AM" },
-        { event: "Lunch", time: "12:30 PM" },
-        { event: "Closing ceremony & awards", time: "2:00 PM" },
+        { event: "Breakfast", time: "8:00 AM", location: "B" },
+        { event: "Hacking Ends", time: "11:00 AM", location: "C" },
+        { event: "Judging", time: "11:00 AM", location: "C" },
+        { event: "Lunch", time: "12:30 PM", location: "C" },
+        { event: "Closing ceremony & Awards", time: "2:00 PM", location: "A" },
       ],
     },
   };
@@ -301,6 +322,29 @@ export const MainPage = () => {
       image: ShpeLogo,
       alt: "SHPE",
       link: "https://www.instagram.com/shpe_iit/",
+    },
+  ];
+
+  const eventLocations = [
+    {
+      marker: "A",
+      name: "Wishnick Hall, South Dearborn Street, Chicago, IL",
+      map: "https://maps.app.goo.gl/fibESJDoq6tRkzfT7",
+    },
+    {
+      marker: "B",
+      name: "McCormick Tribune Campus Center (MTCC)",
+      map: "https://maps.app.goo.gl/AFtndaxTzeAJfVLp9",
+    },
+    {
+      marker: "C",
+      name: "Stuart Building, Chicago, IL",
+      map: "https://maps.app.goo.gl/EzPY1JPdUyFaeQrd6",
+    },
+    {
+      marker: "D",
+      name: "Paul V. Galvin Library, West 33rd Street, Chicago, IL",
+      map: "https://maps.app.goo.gl/H9sddgJYvjTTbxRA6",
     },
   ];
 
@@ -714,6 +758,48 @@ export const MainPage = () => {
             <DaySchedule day="1" {...scheduleData.day1} />
             <DaySchedule day="2" {...scheduleData.day2} />
           </Grid>
+          <Flex
+            justifyContent={"flex-start"}
+            gap={"20px"}
+            direction={"column"}
+            mt="30px"
+            px={{ base: 8, md: 0 }}
+          >
+            {eventLocations.map((location) => (
+              <Flex
+                key={location.marker}
+                alignItems={"center"}
+                justifyContent={""}
+              >
+                <Box
+                  backgroundColor={"#6b9fff"}
+                  borderRadius={"50%"}
+                  padding={"3px"}
+                  ml="5px"
+                  mr="10px"
+                  w="30px"
+                >
+                  <Text
+                    as={"span"}
+                    m={"0"}
+                    fontSize={"18px"}
+                    padding={"22px 7px"}
+                    color={"white"}
+                  >
+                    {location.marker}
+                  </Text>
+                </Box>
+                <Link href={location.map} isExternal>
+                  <Text color={"brand.primary"} fontSize={"18px"}>
+                    {location.name}
+                  </Text>
+                </Link>
+              </Flex>
+            ))}
+            <Text textAlign={"center"} fontStyle={"italic"}>
+              Check the map below for directions
+            </Text>
+          </Flex>
         </Flex>
       </FadeInBottom>
       {/* PRIZES */}
@@ -1101,6 +1187,20 @@ export const MainPage = () => {
               />
             </Flex>
           </Container>
+        </Flex>
+      </FadeInBottom>
+
+      {/* Map */}
+      <FadeInBottom>
+        <Flex
+          flexDirection={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+          margin={{ base: "10px", md: "50px" }}
+          gap={"20px"}
+          w="100%"
+        >
+          <Map />
         </Flex>
       </FadeInBottom>
     </Flex>
