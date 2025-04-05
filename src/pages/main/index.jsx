@@ -100,7 +100,7 @@ export const MainPage = () => {
     seconds: "--",
   });
 
-  const targetDate = new Date("2025-04-05T23:59:59").getTime();
+  const targetDate = new Date("2025-04-05T08:00:00").getTime();
 
   // Function to calculate the remaining time
   const calculateTimeLeft = () => {
